@@ -3,6 +3,7 @@
 		<File Path=".gitignore" />
 		<File Path="LICENSE" />
 	</Folder>
+	<Project Path="DevOps/DevOps.csproj" Id="fa6200fe-8a2e-4312-8763-c3f308b6763c" />
 	<Project Path="Setosa's Power Tools/Setosa's Power Tools.csproj"
 		Id="9637f6ef-ba3e-4347-bc1d-b8bc592c3fb9" />
 </Solution>

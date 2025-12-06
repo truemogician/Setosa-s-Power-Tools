@@ -24,7 +24,8 @@
 		</Description>
 		<PackageId>setosa.power.tools</PackageId>
 		<Title>Setosa's Power Tools</Title>
-		<DistDir>$(MSBuildProjectDirectory)\Dist</DistDir>
+		<DistDir>$(MSBuildProjectDirectory)\Dist\</DistDir>
+		<GameDir>G:\Game Files\Steam\steamapps\common\RimWorld\</GameDir>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -47,4 +48,56 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
+
+	<UsingTask TaskName="BuildXml" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+		<ParameterGroup />
+		<Task>
+			<Reference Include="Microsoft.Build" />
+			<Reference Include="Microsoft.Build.Framework" />
+			<Reference Include="Microsoft.Build.Utilities.Core" />
+			<Code Type="Class" Language="cs" Source="$(SolutionDir)DevOps\Task\BuildXml.cs" />
+		</Task>
+	</UsingTask>
+
+	<UsingTask TaskName="CreateLink" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+		<ParameterGroup />
+		<Task>
+			<Reference Include="Microsoft.Build" />
+			<Reference Include="Microsoft.Build.Framework" />
+			<Reference Include="Microsoft.Build.Utilities.Core" />
+			<Code Type="Class" Language="cs" Source="$(SolutionDir)DevOps\Task\CreateLink.cs" />
+		</Task>
+	</UsingTask>
+
+	<Target Name="PostBuildDist" AfterTargets="Build">
+		<!-- 1. Copy Assets -->
+		<ItemGroup>
+			<ModAssets Include="$(ProjectDir)Public\**\*.*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(ModAssets)" DestinationFolder="$(DistDir)%(RecursiveDir)" SkipUnchangedFiles="true" />
+		<!-- 2. Generate About.xml -->
+		<ItemGroup>
+			<AboutToken Include="Name" Value="$(Title)" />
+			<AboutToken Include="Author" Value="$(Authors)" />
+			<AboutToken Include="PackageId" Value="$(PackageId)" />
+			<AboutToken Include="Version" Value="$(Version)" />
+			<AboutToken Include="Description" Value="$(Description)" />
+		</ItemGroup>
+		<BuildXml
+			Template="$(ProjectDir)Template\About.xml"
+			Destination="$(DistDir)About\About.xml"
+			Tokens="@(AboutToken)"
+		/>
+		<!-- 3. Copy Assembly -->
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DistDir)Assemblies" />
+		<Message Text="Distribution build complete at: $(DistDir)" Importance="high" />
+	</Target>
+
+	<Target Name="DeployAndLink" AfterTargets="PostBuildDist">
+		<CreateLink
+			Source="$(DistDir)"
+			Destination="$(GameDir)\Mods\$(AssemblyName)"
+			Condition="Exists('$(GameDir)Mods')"
+		/>
+	</Target>
 </Project>
