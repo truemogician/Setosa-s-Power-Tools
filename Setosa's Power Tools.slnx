@@ -1,0 +1,8 @@
+<Solution>
+	<Folder Name="/Solution Items/">
+		<File Path=".gitignore" />
+		<File Path="LICENSE" />
+	</Folder>
+	<Project Path="Setosa's Power Tools/Setosa's Power Tools.csproj"
+		Id="9637f6ef-ba3e-4347-bc1d-b8bc592c3fb9" />
+</Solution>

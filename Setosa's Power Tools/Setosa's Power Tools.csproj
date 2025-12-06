@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<Authors>Setosa, true_mogician</Authors>
+		<Description>
+			This mod adds several new power tools to the game. These are industrial level items and
+			can be unlocked via Machining research and then built at the machining table.
+			Currently available tools
+			Chainsaw: +80% Plant Work Speed, +40% Butchery Flesh Speed
+			Power Saw: +80% Construction Speed
+			Auger: +120% Plant Work Speed
+			Electric Chisel: +40% General Labour Speed, +80% Smoothing Speed, +20% Construction
+			Speed
+			Jackhammer: +80% Mining Speed
+			Electric Drill: +80% General Labour Speed, +20% Construction Speed, +80% Mechanoid
+			Butchery Efficiency and Speed
+			Nail gun: +40% Construction Speed
+
+			Credits to Simmin and their original mod, Power Tools, on which this mod is based.
+			https://steamcommunity.com/sharedfiles/filedetails/?id=2440250887
+		</Description>
+		<PackageId>setosa.power.tools</PackageId>
+		<Title>Setosa's Power Tools</Title>
+		<DistDir>$(MSBuildProjectDirectory)\Dist</DistDir>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectProperty Include="PackageId" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
+		<PackageReference Include="Lib.Harmony" Version="2.4.2" />
+		<PackageReference Include="Microsoft.Net.Compilers.Toolset" Version="5.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="2.1.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="ThisAssembly.Project" Version="2.1.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+</Project>
