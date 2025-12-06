@@ -93,6 +93,25 @@
 		<Message Text="Distribution build complete at: $(DistDir)" Importance="high" />
 	</Target>
 
+	<Target Name="PrepareLaunch" AfterTargets="Build">
+		<ItemGroup>
+			<ModsConfigToken Include="PackageId" Value="$(PackageId)" />
+		</ItemGroup>
+		<BuildXml
+			Template="$(ProjectDir)Template\ModsConfig.xml"
+			Destination="$(SolutionDir)SaveData\Config\ModsConfig.xml"
+			Tokens="@(ModsConfigToken)"
+		/>
+		<ItemGroup>
+			<LaunchCmd Include="&quot;$(GameDir)RimWorldWin64.exe&quot; -popupwindow &quot;-savedatafolder=$(SolutionDir)SaveData&quot;" />
+		</ItemGroup>
+		<WriteLinesToFile
+			File="$(TargetDir)LaunchRimWorld.bat"
+			Lines="@(LaunchCmd)"
+			Overwrite="true"
+		/>
+	</Target>
+
 	<Target Name="DeployAndLink" AfterTargets="PostBuildDist">
 		<CreateLink
 			Source="$(DistDir)"
