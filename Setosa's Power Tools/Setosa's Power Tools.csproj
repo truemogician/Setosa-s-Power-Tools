@@ -28,6 +28,10 @@
 		<GameDir>G:\Game Files\Steam\steamapps\common\RimWorld\</GameDir>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<ProjectProperty Include="PackageId" />
 	</ItemGroup>
@@ -103,7 +107,7 @@
 			Tokens="@(ModsConfigToken)"
 		/>
 		<ItemGroup>
-			<LaunchCmd Include="&quot;$(GameDir)RimWorldWin64.exe&quot; -popupwindow &quot;-savedatafolder=$(SolutionDir)SaveData&quot;" />
+			<LaunchCmd Include="start &quot;RimWorld Mod Test&quot; &quot;$(GameDir)RimWorldWin64.exe&quot; -popupwindow &quot;-savedatafolder=$(SolutionDir)SaveData&quot;" />
 		</ItemGroup>
 		<WriteLinesToFile
 			File="$(TargetDir)LaunchRimWorld.bat"
