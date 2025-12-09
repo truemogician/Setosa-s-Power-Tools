@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
   <StyleCategoryDef MayRequire="Ludeon.RimWorld.Ideology">
@@ -6,13 +6,34 @@
     <label>Orange</label>
     <iconPath>Things/Weapons/advancedSaw</iconPath>
     <thingDefStyles>
-      <li><thingDef>advancedTool_PowerSaw</thingDef><styleDef>advancedSawOrange</styleDef></li>
-      <li><thingDef>advancedTool_IndustrialChainsaw</thingDef><styleDef>advancedChainsawOrange</styleDef></li>
-      <li><thingDef>advancedTool_PowerAuger</thingDef><styleDef>advancedAugerOrange</styleDef></li>
-      <li><thingDef>advancedTool_Chisel</thingDef><styleDef>advancedChiselOrange</styleDef></li>
-      <li><thingDef>advancedTool_Jackhammer</thingDef><styleDef>advancedJackhammerOrange</styleDef></li>
-      <li><thingDef>advancedTool_Drill</thingDef><styleDef>advancedDrillOrange</styleDef></li>
-      <li><thingDef>advancedTool_NailGun</thingDef><styleDef>advancedNailGunOrange</styleDef></li>
+      <li>
+        <thingDef>AdvancedTool_PowerSaw</thingDef>
+        <styleDef>advancedSawOrange</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_IndustrialChainsaw</thingDef>
+        <styleDef>advancedChainsawOrange</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_PowerAuger</thingDef>
+        <styleDef>advancedAugerOrange</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Chisel</thingDef>
+        <styleDef>advancedChiselOrange</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Jackhammer</thingDef>
+        <styleDef>advancedJackhammerOrange</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Drill</thingDef>
+        <styleDef>advancedDrillOrange</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_NailGun</thingDef>
+        <styleDef>advancedNailGunOrange</styleDef>
+      </li>
     </thingDefStyles>
   </StyleCategoryDef>
 
@@ -21,13 +42,34 @@
     <label>Yellow</label>
     <iconPath>Things/Weapons/advancedSawYellow</iconPath>
     <thingDefStyles>
-      <li><thingDef>advancedTool_PowerSaw</thingDef><styleDef>advancedSawYellow</styleDef></li>
-      <li><thingDef>advancedTool_IndustrialChainsaw</thingDef><styleDef>advancedChainsawYellow</styleDef></li>
-      <li><thingDef>advancedTool_PowerAuger</thingDef><styleDef>advancedAugerYellow</styleDef></li>
-      <li><thingDef>advancedTool_Chisel</thingDef><styleDef>advancedChiselYellow</styleDef></li>
-      <li><thingDef>advancedTool_Jackhammer</thingDef><styleDef>advancedJackhammerYellow</styleDef></li>
-      <li><thingDef>advancedTool_Drill</thingDef><styleDef>advancedDrillYellow</styleDef></li>
-      <li><thingDef>advancedTool_NailGun</thingDef><styleDef>advancedNailGunYellow</styleDef></li>
+      <li>
+        <thingDef>AdvancedTool_PowerSaw</thingDef>
+        <styleDef>advancedSawYellow</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_IndustrialChainsaw</thingDef>
+        <styleDef>advancedChainsawYellow</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_PowerAuger</thingDef>
+        <styleDef>advancedAugerYellow</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Chisel</thingDef>
+        <styleDef>advancedChiselYellow</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Jackhammer</thingDef>
+        <styleDef>advancedJackhammerYellow</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Drill</thingDef>
+        <styleDef>advancedDrillYellow</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_NailGun</thingDef>
+        <styleDef>advancedNailGunYellow</styleDef>
+      </li>
     </thingDefStyles>
   </StyleCategoryDef>
 
@@ -36,13 +78,34 @@
     <label>Red</label>
     <iconPath>Things/Weapons/advancedSawRed</iconPath>
     <thingDefStyles>
-      <li><thingDef>advancedTool_PowerSaw</thingDef><styleDef>advancedSawRed</styleDef></li>
-      <li><thingDef>advancedTool_IndustrialChainsaw</thingDef><styleDef>advancedChainsawRed</styleDef></li>
-      <li><thingDef>advancedTool_PowerAuger</thingDef><styleDef>advancedAugerRed</styleDef></li>
-      <li><thingDef>advancedTool_Chisel</thingDef><styleDef>advancedChiselRed</styleDef></li>
-      <li><thingDef>advancedTool_Jackhammer</thingDef><styleDef>advancedJackhammerRed</styleDef></li>
-      <li><thingDef>advancedTool_Drill</thingDef><styleDef>advancedDrillRed</styleDef></li>
-      <li><thingDef>advancedTool_NailGun</thingDef><styleDef>advancedNailGunRed</styleDef></li>
+      <li>
+        <thingDef>AdvancedTool_PowerSaw</thingDef>
+        <styleDef>advancedSawRed</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_IndustrialChainsaw</thingDef>
+        <styleDef>advancedChainsawRed</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_PowerAuger</thingDef>
+        <styleDef>advancedAugerRed</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Chisel</thingDef>
+        <styleDef>advancedChiselRed</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Jackhammer</thingDef>
+        <styleDef>advancedJackhammerRed</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Drill</thingDef>
+        <styleDef>advancedDrillRed</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_NailGun</thingDef>
+        <styleDef>advancedNailGunRed</styleDef>
+      </li>
     </thingDefStyles>
   </StyleCategoryDef>
 
@@ -51,13 +114,34 @@
     <label>Blue</label>
     <iconPath>Things/Weapons/advancedSawBlue</iconPath>
     <thingDefStyles>
-      <li><thingDef>advancedTool_PowerSaw</thingDef><styleDef>advancedSawBlue</styleDef></li>
-      <li><thingDef>advancedTool_IndustrialChainsaw</thingDef><styleDef>advancedChainsawBlue</styleDef></li>
-      <li><thingDef>advancedTool_PowerAuger</thingDef><styleDef>advancedAugerBlue</styleDef></li>
-      <li><thingDef>advancedTool_Chisel</thingDef><styleDef>advancedChiselBlue</styleDef></li>
-      <li><thingDef>advancedTool_Jackhammer</thingDef><styleDef>advancedJackhammerBlue</styleDef></li>
-      <li><thingDef>advancedTool_Drill</thingDef><styleDef>advancedDrillBlue</styleDef></li>
-      <li><thingDef>advancedTool_NailGun</thingDef><styleDef>advancedNailGunBlue</styleDef></li>
+      <li>
+        <thingDef>AdvancedTool_PowerSaw</thingDef>
+        <styleDef>advancedSawBlue</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_IndustrialChainsaw</thingDef>
+        <styleDef>advancedChainsawBlue</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_PowerAuger</thingDef>
+        <styleDef>advancedAugerBlue</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Chisel</thingDef>
+        <styleDef>advancedChiselBlue</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Jackhammer</thingDef>
+        <styleDef>advancedJackhammerBlue</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Drill</thingDef>
+        <styleDef>advancedDrillBlue</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_NailGun</thingDef>
+        <styleDef>advancedNailGunBlue</styleDef>
+      </li>
     </thingDefStyles>
   </StyleCategoryDef>
 
@@ -66,13 +150,34 @@
     <label>Green</label>
     <iconPath>Things/Weapons/advancedSawGreen</iconPath>
     <thingDefStyles>
-      <li><thingDef>advancedTool_PowerSaw</thingDef><styleDef>advancedSawGreen</styleDef></li>
-      <li><thingDef>advancedTool_IndustrialChainsaw</thingDef><styleDef>advancedChainsawGreen</styleDef></li>
-      <li><thingDef>advancedTool_PowerAuger</thingDef><styleDef>advancedAugerGreen</styleDef></li>
-      <li><thingDef>advancedTool_Chisel</thingDef><styleDef>advancedChiselGreen</styleDef></li>
-      <li><thingDef>advancedTool_Jackhammer</thingDef><styleDef>advancedJackhammerGreen</styleDef></li>
-      <li><thingDef>advancedTool_Drill</thingDef><styleDef>advancedDrillGreen</styleDef></li>
-      <li><thingDef>advancedTool_NailGun</thingDef><styleDef>advancedNailGunGreen</styleDef></li>
+      <li>
+        <thingDef>AdvancedTool_PowerSaw</thingDef>
+        <styleDef>advancedSawGreen</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_IndustrialChainsaw</thingDef>
+        <styleDef>advancedChainsawGreen</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_PowerAuger</thingDef>
+        <styleDef>advancedAugerGreen</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Chisel</thingDef>
+        <styleDef>advancedChiselGreen</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Jackhammer</thingDef>
+        <styleDef>advancedJackhammerGreen</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_Drill</thingDef>
+        <styleDef>advancedDrillGreen</styleDef>
+      </li>
+      <li>
+        <thingDef>AdvancedTool_NailGun</thingDef>
+        <styleDef>advancedNailGunGreen</styleDef>
+      </li>
     </thingDefStyles>
   </StyleCategoryDef>
 

@@ -3,39 +3,39 @@
 public static class Presets {
 	public static readonly ThingStatOffsetCollection Normal = new() {
 		{
-			"advancedTool_IndustrialChainsaw",
+			"AdvancedTool_IndustrialChainsaw",
 			[
 				("PlantWorkSpeed", 0.8f),
 				("ButcheryFleshSpeed", 0.4f),
 				("MoveSpeed", -0.25f)
 			]
 		}, {
-			"advancedTool_PowerSaw",
+			"AdvancedTool_PowerSaw",
 			[
 				("ConstructionSpeed", 0.8f),
 				("MoveSpeed", -0.25f)
 			]
 		}, {
-			"advancedTool_PowerAuger",
+			"AdvancedTool_PowerAuger",
 			[
 				("PlantWorkSpeed", 1.2f),
 				("MoveSpeed", -0.25f)
 			]
 		}, {
-			"advancedTool_Chisel",
+			"AdvancedTool_Chisel",
 			[
 				("GeneralLaborSpeed", 0.4f),
 				("SmoothingSpeed", 0.8f),
 				("ConstructionSpeed", 0.2f)
 			]
 		}, {
-			"advancedTool_Jackhammer",
+			"AdvancedTool_Jackhammer",
 			[
 				("MiningSpeed", 0.8f),
 				("MoveSpeed", -0.25f)
 			]
 		}, {
-			"advancedTool_Drill",
+			"AdvancedTool_Drill",
 			[
 				("GeneralLaborSpeed", 0.8f),
 				("ConstructionSpeed", 0.2f),
@@ -43,7 +43,7 @@ public static class Presets {
 				("ButcheryMechanoidSpeed", 0.8f)
 			]
 		}, {
-			"advancedTool_NailGun",
+			"AdvancedTool_NailGun",
 			[("ConstructionSpeed", 0.4f)]
 		}
 	};

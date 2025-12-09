@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Defs>
-  <ThingDef Abstract="True" Name="advancedRangedToolBase" ParentName="BaseWeapon">
+  <ThingDef Abstract="True" Name="AdvancedRangedToolBase" ParentName="BaseWeapon">
     <techLevel>Industrial</techLevel>
     <comps>
       <li>
@@ -13,8 +13,10 @@
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
     </comps>
-	<thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
-	<recipeMaker>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <recipeMaker>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
@@ -23,8 +25,8 @@
         <li>TableMachining</li>
       </recipeUsers>
       <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-	  <researchPrerequisite>Machining</researchPrerequisite>
-	  <skillRequirements>
+      <researchPrerequisite>Machining</researchPrerequisite>
+      <skillRequirements>
         <Crafting>6</Crafting>
       </skillRequirements>
     </recipeMaker>
@@ -49,40 +51,41 @@
     </projectile>
   </ThingDef>
 
-  	<ThingDef ParentName="advancedRangedToolBase">
-		<defName>advancedTool_NailGun</defName>
-		<label>nail gun</label>
-		<description>A high-pressure tool that drives metal fasteners with explosive force, designed for speeding up construction.</description>
-		<graphicData>
-			<texPath>Things/Weapons/advancedNailGun</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1</drawSize>
-		</graphicData>
-		<soundInteract>Interact_Autopistol</soundInteract>
-	<costList>
+  <ThingDef ParentName="AdvancedRangedToolBase">
+    <defName>AdvancedTool_NailGun</defName>
+    <label>nail gun</label>
+    <description>A high-pressure tool that drives metal fasteners with explosive force, designed for speeding up construction.</description>
+    <graphicData>
+      <texPath>Things/Weapons/advancedNailGun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1</drawSize>
+    </graphicData>
+    <soundInteract>Interact_Autopistol</soundInteract>
+    <costList>
       <Steel>40</Steel>
-	  <Chemfuel>20</Chemfuel>
+      <Chemfuel>20</Chemfuel>
       <ComponentIndustrial>3</ComponentIndustrial>
     </costList>
-		<thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
-		<statBases>
-			<WorkToMake>10000</WorkToMake>
-			<Mass>2</Mass>
-			<AccuracyTouch>0.5</AccuracyTouch>
-			<AccuracyShort>0.6</AccuracyShort>
-			<AccuracyMedium>0.4</AccuracyMedium>
-			<AccuracyLong>0.15</AccuracyLong>
-			<RangedWeapon_Cooldown>1.65</RangedWeapon_Cooldown>
-		</statBases>
-	<weaponTags>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <statBases>
+      <WorkToMake>10000</WorkToMake>
+      <Mass>2</Mass>
+      <AccuracyTouch>0.5</AccuracyTouch>
+      <AccuracyShort>0.6</AccuracyShort>
+      <AccuracyMedium>0.4</AccuracyMedium>
+      <AccuracyLong>0.15</AccuracyLong>
+      <RangedWeapon_Cooldown>1.65</RangedWeapon_Cooldown>
+    </statBases>
+    <weaponTags>
       <li>AdvancedTool</li>
-	  <li>Nail gun</li>
     </weaponTags>
-		<weaponClasses>
-			<li>Ranged</li>
-			<li>RangedLight</li>
-		</weaponClasses>
-	<recipeMaker>
+    <weaponClasses>
+      <li>Ranged</li>
+      <li>RangedLight</li>
+    </weaponClasses>
+    <recipeMaker>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
@@ -91,40 +94,39 @@
         <li>TableMachining</li>
       </recipeUsers>
       <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-	  <researchPrerequisite>Machining</researchPrerequisite>
-	  <skillRequirements>
+      <researchPrerequisite>Machining</researchPrerequisite>
+      <skillRequirements>
         <Crafting>6</Crafting>
       </skillRequirements>
     </recipeMaker>
-		<verbs>
-		<li>
+    <verbs>
+      <li>
         <burstShotCount>6</burstShotCount>
-			<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
-			<verbClass>Verb_Shoot</verbClass>
-			<hasStandardCommand>true</hasStandardCommand>
-			<defaultProjectile>nailGunNail</defaultProjectile>
-			<warmupTime>1</warmupTime>
-			<range>15</range>
+        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>nailGunNail</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <range>15</range>
         <soundCast>Interact_BeatFire</soundCast>
-
         <muzzleFlashScale>1</muzzleFlashScale>
-		</li>
-		</verbs>
-        	<equippedStatOffsets>
+      </li>
+    </verbs>
+    <equippedStatOffsets>
       <ConstructionSpeed>0.40</ConstructionSpeed>
     </equippedStatOffsets>
-		<tools>
-		<li>
-			<label>limb</label>
-			<capacities>
-			<li>Poke</li>
-            <li>Stab</li>
-			</capacities>
-			<power>3</power>
-			<cooldownTime>0.8</cooldownTime>
-		</li>
-		</tools>
-		<rotateInShelves>false</rotateInShelves>
-	</ThingDef>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Poke</li>
+          <li>Stab</li>
+        </capacities>
+        <power>3</power>
+        <cooldownTime>0.8</cooldownTime>
+      </li>
+    </tools>
+    <rotateInShelves>false</rotateInShelves>
+  </ThingDef>
 
 </Defs>
