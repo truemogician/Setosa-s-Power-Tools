@@ -3,7 +3,9 @@ using Verse;
 namespace Setosa;
 
 public class Settings : ModSettings {
-    private StatsPreset _preset = StatsPreset.Normal;
+	public static Settings Default { get; internal set; } = null!;
+
+	private StatsPreset _preset = StatsPreset.Normal;
 
 	private ThingStatOffsetCollection? _customOffsets;
 
