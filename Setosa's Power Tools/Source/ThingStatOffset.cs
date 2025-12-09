@@ -80,21 +80,21 @@ public class ThingStatOffset : IExposable {
 		=> new() { stat = offset.Stat, value = offset.Value };
 }
 
-public class StatOffsetCollection : Base, IExposable {
+public class ThingStatOffsetCollection : Base, IExposable {
 	public enum ApplyMode : byte {
 		Set,
 		Append,
 		Overwrite
 	}
 
-	public StatOffsetCollection() { }
+	public ThingStatOffsetCollection() { }
 
-	public StatOffsetCollection(IEnumerable<Tuple> collection)
+	public ThingStatOffsetCollection(IEnumerable<Tuple> collection)
 		=> collection.ForEach(Add);
 
-	public StatOffsetCollection(IDictionary3D<string, string, float> dictionary) : base(dictionary) { }
+	public ThingStatOffsetCollection(IDictionary3D<string, string, float> dictionary) : base(dictionary) { }
 
-	public static readonly StatOffsetCollection NormalPreset = new() {
+	public static readonly ThingStatOffsetCollection NormalPreset = new() {
 		{
 			"advancedTool_IndustrialChainsaw",
 			[
@@ -141,9 +141,9 @@ public class StatOffsetCollection : Base, IExposable {
 		}
 	};
 
-	public static readonly StatOffsetCollection NerfedPreset = NormalPreset.Clone().Transform(v => v > 0 ? v / 2f : v);
+	public static readonly ThingStatOffsetCollection NerfedPreset = NormalPreset.Clone().Transform(v => v > 0 ? v / 2f : v);
 
-	public static readonly StatOffsetCollection BuffedPreset = NormalPreset.Clone().Transform(v => v > 0 ? v * 1.5f : v);
+	public static readonly ThingStatOffsetCollection BuffedPreset = NormalPreset.Clone().Transform(v => v > 0 ? v * 1.5f : v);
 
 	public void Add(string thingDef, List<(string StatDef, float Value)> offsets)
 		=> offsets.ForEach(t => Add(thingDef, t.StatDef, t.Value));
@@ -163,11 +163,11 @@ public class StatOffsetCollection : Base, IExposable {
 		}
 	}
 
-	public StatOffsetCollection Clone() => new(this);
+	public ThingStatOffsetCollection Clone() => new(this);
 
-	public StatOffsetCollection Transform(Func<float, float> selector) => Transform(selector, _ => true);
+	public ThingStatOffsetCollection Transform(Func<float, float> selector) => Transform(selector, _ => true);
 
-	public StatOffsetCollection Transform(Func<float, float> selector, Func<Tuple, bool> filter) {
+	public ThingStatOffsetCollection Transform(Func<float, float> selector, Func<Tuple, bool> filter) {
 		var updates = this.Where(filter)
 			.Select(tuple => (tuple.Item1, tuple.Item2, selector(tuple.Item3)))
 			.ToList();

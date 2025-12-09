@@ -25,7 +25,7 @@ public class Mod : Verse.Mod {
 
 	public Mod(ModContentPack content) : base(content) {
 		Settings = GetSettings<Settings>();
-		Settings.Offsets.Apply(StatOffsetCollection.ApplyMode.Overwrite);
+		Settings.Offsets.Apply(ThingStatOffsetCollection.ApplyMode.Overwrite);
     }
 
 	public static Settings Settings { get; private set; } = null!;
@@ -99,7 +99,7 @@ public class Mod : Verse.Mod {
 					Widgets.Label(cols[0], $"{stat.LabelCap}:");
 					Widgets.Label(cols[1], FormatValue(tuple.Value));
 					if (Settings.Preset == StatsPreset.Custom) {
-						float maximum = StatOffsetCollection.NormalPreset[tuple.ThingDef, tuple.StatDef] * 4;
+						float maximum = ThingStatOffsetCollection.NormalPreset[tuple.ThingDef, tuple.StatDef] * 4;
 						float newValue = Widgets.HorizontalSlider(
 							rect: cols[2], 
 							value: tuple.Value, 
@@ -127,6 +127,6 @@ public class Mod : Verse.Mod {
 
 	public override void WriteSettings() {
 		base.WriteSettings();
-		Settings.Offsets.Apply(StatOffsetCollection.ApplyMode.Overwrite);
+		Settings.Offsets.Apply(ThingStatOffsetCollection.ApplyMode.Overwrite);
 	}
 }
