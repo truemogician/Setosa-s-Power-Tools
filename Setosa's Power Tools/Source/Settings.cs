@@ -13,15 +13,15 @@ public class Settings : ModSettings {
 	}
 
 	public ThingStatOffsetCollection CustomOffsets {
-		get => _customOffsets ??= ThingStatOffsetCollection.NormalPreset.Clone();
+		get => _customOffsets ??= Presets.Normal.Clone();
 		internal set => _customOffsets = value;
 	}
 
 	public ThingStatOffsetCollection Offsets => Preset switch {
-		StatsPreset.Nerfed => ThingStatOffsetCollection.NerfedPreset,
-		StatsPreset.Buffed => ThingStatOffsetCollection.BuffedPreset,
+		StatsPreset.Nerfed => Presets.Nerfed,
+		StatsPreset.Buffed => Presets.Buffed,
 		StatsPreset.Custom => CustomOffsets,
-		_                  => ThingStatOffsetCollection.NormalPreset
+		_                  => Presets.Normal
 	};
 
 	public override void ExposeData() {

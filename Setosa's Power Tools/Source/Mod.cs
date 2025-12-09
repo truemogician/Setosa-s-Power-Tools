@@ -99,7 +99,7 @@ public class Mod : Verse.Mod {
 					Widgets.Label(cols[0], $"{stat.LabelCap}:");
 					Widgets.Label(cols[1], FormatValue(tuple.Value));
 					if (Settings.Preset == StatsPreset.Custom) {
-						float maximum = ThingStatOffsetCollection.NormalPreset[tuple.ThingDef, tuple.StatDef] * 4;
+						float maximum = Presets.Normal[tuple.ThingDef, tuple.StatDef] * 4;
 						float newValue = Widgets.HorizontalSlider(
 							rect: cols[2], 
 							value: tuple.Value, 

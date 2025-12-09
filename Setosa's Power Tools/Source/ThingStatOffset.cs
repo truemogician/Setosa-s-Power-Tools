@@ -94,57 +94,6 @@ public class ThingStatOffsetCollection : Base, IExposable {
 
 	public ThingStatOffsetCollection(IDictionary3D<string, string, float> dictionary) : base(dictionary) { }
 
-	public static readonly ThingStatOffsetCollection NormalPreset = new() {
-		{
-			"advancedTool_IndustrialChainsaw",
-			[
-				("PlantWorkSpeed", 0.8f),
-				("ButcheryFleshSpeed", 0.4f),
-				("MoveSpeed", -0.25f)
-			]
-		}, {
-			"advancedTool_PowerSaw",
-			[
-				("ConstructionSpeed", 0.8f),
-				("MoveSpeed", -0.25f)
-			]
-		}, {
-			"advancedTool_PowerAuger",
-			[
-				("PlantWorkSpeed", 1.2f),
-				("MoveSpeed", -0.25f)
-			]
-		}, {
-			"advancedTool_Chisel",
-			[
-				("GeneralLaborSpeed", 0.4f),
-				("SmoothingSpeed", 0.8f),
-				("ConstructionSpeed", 0.2f)
-			]
-		}, {
-			"advancedTool_Jackhammer",
-			[
-				("MiningSpeed", 0.8f),
-				("MoveSpeed", -0.25f)
-			]
-		}, {
-			"advancedTool_Drill",
-			[
-				("GeneralLaborSpeed", 0.8f),
-				("ConstructionSpeed", 0.2f),
-				("ButcheryMechanoidEfficiency", 0.8f),
-				("ButcheryMechanoidSpeed", 0.8f)
-			]
-		}, {
-			"advancedTool_NailGun",
-			[("ConstructionSpeed", 0.4f)]
-		}
-	};
-
-	public static readonly ThingStatOffsetCollection NerfedPreset = NormalPreset.Clone().Transform(v => v > 0 ? v / 2f : v);
-
-	public static readonly ThingStatOffsetCollection BuffedPreset = NormalPreset.Clone().Transform(v => v > 0 ? v * 1.5f : v);
-
 	public void Add(string thingDef, List<(string StatDef, float Value)> offsets)
 		=> offsets.ForEach(t => Add(thingDef, t.StatDef, t.Value));
 
