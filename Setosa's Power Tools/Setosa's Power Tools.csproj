@@ -22,6 +22,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2440250887
 		</Description>
 		<PackageId>setosa.power.tools</PackageId>
 		<Title>Setosa's Power Tools</Title>
+		<NoWarn>1701;1702;IDE0130</NoWarn>
 		<DistDir>$(MSBuildProjectDirectory)\Dist\</DistDir>
 		<GameDir>G:\Game Files\Steam\steamapps\common\RimWorld\</GameDir>
 	</PropertyGroup>

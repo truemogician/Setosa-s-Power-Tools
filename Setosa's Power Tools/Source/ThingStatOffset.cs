@@ -112,7 +112,7 @@ public class ThingStatOffsetCollection : Base, IExposable {
 		}
 	}
 
-	public ThingStatOffsetCollection Clone() => new(this);
+	public ThingStatOffsetCollection Clone() => [.. this];
 
 	public ThingStatOffsetCollection Transform(Func<float, float> selector) => Transform(selector, _ => true);
 

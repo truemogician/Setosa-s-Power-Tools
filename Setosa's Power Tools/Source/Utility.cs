@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using Verse;
@@ -97,22 +98,23 @@ internal class TransientStyle: IDisposable {
 }
 
 public static class RectExtensions {
-    private static readonly Regex FlexPattern = new Regex(
+    private static readonly Regex FlexPattern = new(
         @"^(?<val>\d+(?:\.\d+)?)\s*(?<unit>fr|px)?$",
         RegexOptions.Compiled | RegexOptions.ExplicitCapture | RegexOptions.IgnoreCase
     );
 
 	extension(Rect rect) {
-		public List<Rect> FlexBox(params string[] lengths) {
-			var results = new List<Rect>(lengths.Length);
-			var parsedItems = new (float val, bool fr)[lengths.Length];
+		public List<Rect> FlexBox(IEnumerable<string> lengths) {
+			var lens = lengths.ToArray();
+            var results = new List<Rect>(lens.Length);
+			var parsedItems = new (float val, bool fr)[lens.Length];
 
 			float totalFixedPx = 0f;
 			float totalFr = 0f;
-			for (int i = 0; i < lengths.Length; i++) {
-				var match = FlexPattern.Match(lengths[i]);
+			for (int i = 0; i < lens.Length; i++) {
+				var match = FlexPattern.Match(lens[i]);
 				if (!match.Success)
-					throw new FormatException($"Invalid FlexBox length format: {lengths[i]}");
+					throw new FormatException($"Invalid FlexBox length format: {lens[i]}");
 				float val = float.Parse(match.Groups["val"].Value);
 				string unit = match.Groups["unit"].Value.ToLowerInvariant();
 				parsedItems[i] = (val, unit == "fr");
@@ -124,7 +126,7 @@ public static class RectExtensions {
 
 			if (totalFixedPx > rect.width) {
 				throw new ArgumentOutOfRangeException(
-					nameof(lengths),
+					nameof(lens),
 					$"Total fixed width ({totalFixedPx}px) exceeds the available Rect width ({rect.width}px)."
 				);
 			}
@@ -132,8 +134,8 @@ public static class RectExtensions {
 			float availableSpace = rect.width - totalFixedPx;
 			float pxPerFr = totalFr > 0 ? availableSpace / totalFr : 0;
 			float currentX = rect.x;
-			foreach (var item in parsedItems) {
-				float width = item.fr ? item.val * pxPerFr : item.val;
+			foreach (var (val, fr) in parsedItems) {
+				float width = fr ? val * pxPerFr : val;
 				results.Add(new Rect(currentX, rect.y, width, rect.height));
 				currentX += width;
 			}

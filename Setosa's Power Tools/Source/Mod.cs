@@ -95,7 +95,7 @@ public class Mod : Verse.Mod {
 						Logger.Warning($"Stat {tuple.StatDef} not found", true);
 						continue;
 					}
-					var cols = scrollList.GetRect(RowHeight).FlexBox("250", "50", "1fr");
+					var cols = scrollList.GetRect(RowHeight).FlexBox(["250", "50", "1fr"]);
 					Widgets.Label(cols[0], $"{stat.LabelCap}:");
 					Widgets.Label(cols[1], FormatValue(tuple.Value));
 					if (Settings.Preset == StatsPreset.Custom) {
