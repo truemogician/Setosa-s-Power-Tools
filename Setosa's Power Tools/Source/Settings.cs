@@ -5,22 +5,24 @@ namespace Setosa;
 public class Settings : ModSettings {
     private StatsPreset _preset = StatsPreset.Normal;
 
-	private StatOffsets _customOffsets = StatOffsets.NormalPreset.Clone();
-
+	private StatOffsetCollection? _customOffsets;
 
     public StatsPreset Preset {
 		get => _preset;
 		internal set => _preset = value;
 	}
 
-	public StatOffsets CustomOffsets => _customOffsets;
+	public StatOffsetCollection CustomOffsets {
+		get => _customOffsets ??= StatOffsetCollection.NormalPreset.Clone();
+		internal set => _customOffsets = value;
+	}
 
-	public StatOffsets Offsets => Preset switch {
-		StatsPreset.Nerfed => StatOffsets.NerfedPreset,
-		StatsPreset.Buffed => StatOffsets.BuffedPreset,
+	public StatOffsetCollection Offsets => Preset switch {
+		StatsPreset.Nerfed => StatOffsetCollection.NerfedPreset,
+		StatsPreset.Buffed => StatOffsetCollection.BuffedPreset,
 		StatsPreset.Custom => CustomOffsets,
-		_ => StatOffsets.NormalPreset
-    };
+		_                  => StatOffsetCollection.NormalPreset
+	};
 
 	public override void ExposeData() {
 		base.ExposeData();

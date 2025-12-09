@@ -37,6 +37,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="IsExternalInit" Version="1.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
 		<PackageReference Include="Lib.Harmony" Version="2.4.2" />
 		<PackageReference Include="Microsoft.Net.Compilers.Toolset" Version="5.0.0">
@@ -51,6 +55,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="TrueMogician.Extensions.Collections" Version="0.7.0" />
 	</ItemGroup>
 
 	<UsingTask TaskName="BuildXml" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
@@ -93,7 +98,12 @@
 			Tokens="@(AboutToken)"
 		/>
 		<!-- 3. Copy Assembly -->
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DistDir)Assemblies" />
+		<ItemGroup>
+			<AssembliesToCopy Include="$(TargetDir)*.dll" />
+			<AssembliesToCopy Remove="$(TargetDir)0Harmony.dll" />
+			<AssembliesToCopy Remove="$(TargetDir)System.*.dll" />
+		</ItemGroup>
+		<Copy SourceFiles="@(AssembliesToCopy)" DestinationFolder="$(DistDir)Assemblies" />
 		<Message Text="Distribution build complete at: $(DistDir)" Importance="high" />
 	</Target>
 

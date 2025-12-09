@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
@@ -18,58 +19,114 @@ public class Mod : Verse.Mod {
 		// Reads all [HarmonyPatch] attributes in your assembly and applies them
 		harmony.PatchAll(Assembly.GetExecutingAssembly());
 		Logger.Message("Initialized");
+	}
+
+	private readonly ScrollView _scroll = new();
+
+	public Mod(ModContentPack content) : base(content) {
+		Settings = GetSettings<Settings>();
+		Settings.Offsets.Apply(StatOffsetCollection.ApplyMode.Overwrite);
     }
 
 	public static Settings Settings { get; private set; } = null!;
 
-	public Mod(ModContentPack content) : base(content) {
-		Settings = GetSettings<Settings>();
+	private const float RowHeight = 30;
+
+	private static string FormatValue(float value) {
+		var color = value switch {
+			> 0f => "green",
+			0    => "white",
+			_    => "red"
+		};
+		return $"<color={color}>{value:+0.##%;-0.##%;0%}</color>";
 	}
 
-	public override string SettingsCategory() => ThisAssembly.Info.Title;
+    public override string SettingsCategory() => ThisAssembly.Info.Title;
 
 	public override void DoSettingsWindowContents(Rect inRect) {
 		var list = new Listing_Standard();
 		list.Begin(inRect);
 
-		var rect = list.GetRect(30f); // Reserve space for the row
+		var rect = list.GetRect(RowHeight);
 		Widgets.Label(rect.LeftHalf(), "Preset:");
-
 		if (Widgets.ButtonText(rect.RightHalf(), Settings.Preset.ToString())) {
 			var options = Enum.GetValues(typeof(StatsPreset))
 				.OfType<StatsPreset>()
-				.Select(
-					preset => new FloatMenuOption(preset.ToString(), () => Settings.Preset = preset)
+				.Select(preset => new FloatMenuOption(preset.ToString(), () => Settings.Preset = preset)
 				)
 				.ToList();
 			Find.WindowStack.Add(new FloatMenu(options));
 		}
 
-		list.Gap();
-		foreach (var (thingDef, offsets) in StatOffsets.NormalPreset) {
+		list.GapLine(RowHeight / 2);
+
+		var groups = Settings.Offsets.Select(t => (ThingStatOffset)t)
+			.GroupBy(t => t.ThingDef)
+			.ToDictionary(g => g.Key, g => g.ToList());
+		float height = (groups.Count + (Settings.Preset == StatsPreset.Custom ? Settings.Offsets.Count : groups.Count)) * RowHeight;
+
+		var rest = new Rect(inRect) { y = list.CurHeight, height = inRect.height - list.CurHeight };
+        var scrollList = _scroll.Begin(rest, height);
+
+		var customUpdates = new List<ThingStatOffset>();
+		foreach (var (thingDef, offsets) in groups) {
 			var thing = DefDatabase<ThingDef>.GetNamed(thingDef, false);
 			if (thing is null) {
 				Logger.Warning($"Thing {thingDef} not found", true);
 				continue;
 			}
-			list.Label($"{thing.LabelCap} Offsets:");
-			for (int i = 0; i < offsets.Count; ++i) {
-				var offset = offsets[i];
-				var stat = offset.Stat;
-				if (stat is null) {
-					Logger.Warning($"Stat {offset.DefName} not found", true);
-					continue;
+			using (new TransientStyle { Anchor = TextAnchor.MiddleCenter })
+				scrollList.Label($"<b>{thing.LabelCap}</b>");
+			if (Settings.Preset != StatsPreset.Custom) {
+				var texts = new List<string>();
+				foreach (var tuple in offsets) {
+					if (tuple.Stat is { } stat)
+						texts.Add($"{FormatValue(tuple.Value)} {stat.label}");
+					else
+						Logger.Warning($"Stat {tuple.StatDef} not found", true);
 				}
-				list.Label($"{stat.LabelCap}: {offset.Value:P0}");
-				if (Settings.Preset == StatsPreset.Custom) {
-					var sliderRect = list.GetRect(22f);
-					var value = Widgets.HorizontalSlider(sliderRect, offset.Value, 0f, 2f, roundTo: 0.1f);
-					offsets[i] = new StatOffset(offset.DefName!, value);
+				using (new TransientStyle { Anchor = TextAnchor.MiddleCenter })
+                    Widgets.Label(scrollList.GetRect(RowHeight), string.Join(", ", texts));
+			}
+			else {
+				foreach (var tuple in offsets) {
+					var stat = tuple.Stat;
+					if (stat is null) {
+						Logger.Warning($"Stat {tuple.StatDef} not found", true);
+						continue;
+					}
+					var cols = scrollList.GetRect(RowHeight).FlexBox("250", "50", "1fr");
+					Widgets.Label(cols[0], $"{stat.LabelCap}:");
+					Widgets.Label(cols[1], FormatValue(tuple.Value));
+					if (Settings.Preset == StatsPreset.Custom) {
+						float maximum = StatOffsetCollection.NormalPreset[tuple.ThingDef, tuple.StatDef] * 4;
+						float newValue = Widgets.HorizontalSlider(
+							rect: cols[2], 
+							value: tuple.Value, 
+							min: Math.Min(0f, maximum), 
+							max: Math.Max(0f, maximum), 
+							roundTo: 0.1f
+						);
+						if (!Mathf.Approximately(tuple.Value, newValue))
+							customUpdates.Add(tuple.WithNewValue(newValue));
+					}
 				}
-            }
+			}
 		}
 
-        list.End();
-		base.DoSettingsWindowContents(inRect);
+		_scroll.End();
+		list.End();
+
+        if (customUpdates.Count > 0) {
+			var newCustomOffsets = Settings.CustomOffsets.Clone();
+			foreach ((string thing, string stat, float value) in customUpdates)
+				newCustomOffsets[thing, stat] = value;
+			Settings.CustomOffsets = newCustomOffsets;
+		}
+	}
+
+	public override void WriteSettings() {
+		base.WriteSettings();
+		Settings.Offsets.Apply(StatOffsetCollection.ApplyMode.Overwrite);
 	}
 }
