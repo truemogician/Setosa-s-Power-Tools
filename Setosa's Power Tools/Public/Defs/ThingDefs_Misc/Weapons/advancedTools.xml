@@ -54,29 +54,23 @@
       <Chemfuel>40</Chemfuel>
       <ComponentIndustrial>6</ComponentIndustrial>
     </costList>
-    <equippedStatOffsets>
-      <PlantWorkSpeed>0.80</PlantWorkSpeed>
-      <ButcheryFleshSpeed>0.40</ButcheryFleshSpeed>
-      <MoveSpeed>-0.25</MoveSpeed>
-    </equippedStatOffsets>
     <tools>
       <li>
-        <label>blade</label>
-        <capacities>
-          <li>Scratch</li>
-        </capacities>
-        <power>10</power>
-        <cooldownTime>0.8</cooldownTime>
-        <armorPenetration>0</armorPenetration>
-      </li>
-      <li>
-        <label>edge</label>
+        <label>chain</label>
         <capacities>
           <li>Cut</li>
         </capacities>
-        <power>12</power>
-        <cooldownTime>1.2</cooldownTime>
-        <armorPenetration>0</armorPenetration>
+        <power>28</power>
+        <cooldownTime>2.5</cooldownTime>
+        <armorPenetration>0.15</armorPenetration>
+      </li>
+      <li>
+        <label>body</label>
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>1.8</cooldownTime>
       </li>
     </tools>
     <weaponTags>
@@ -102,18 +96,15 @@
       <Chemfuel>50</Chemfuel>
       <ComponentIndustrial>8</ComponentIndustrial>
     </costList>
-    <equippedStatOffsets>
-      <ConstructionSpeed>0.80</ConstructionSpeed>
-      <MoveSpeed>-0.25</MoveSpeed>
-    </equippedStatOffsets>
     <tools>
       <li>
         <label>blade</label>
         <capacities>
-          <li>Poke</li>
+          <li>Cut</li>
         </capacities>
         <power>9</power>
-        <cooldownTime>2</cooldownTime>
+        <cooldownTime>2.0</cooldownTime>
+        <armorPenetration>0.3</armorPenetration>
       </li>
       <li>
         <label>head</label>
@@ -147,28 +138,24 @@
       <Chemfuel>70</Chemfuel>
       <ComponentIndustrial>10</ComponentIndustrial>
     </costList>
-    <equippedStatOffsets>
-      <PlantWorkSpeed>1.2</PlantWorkSpeed>
-      <MoveSpeed>-0.25</MoveSpeed>
-    </equippedStatOffsets>
     <tools>
       <li>
-        <label>drill</label>
+        <label>blade</label>
         <capacities>
           <li>Cut</li>
         </capacities>
         <power>12</power>
         <cooldownTime>1.5</cooldownTime>
-        <armorPenetration>0</armorPenetration>
+        <armorPenetration>0.1</armorPenetration>
       </li>
       <li>
-        <label>point</label>
+        <label>drill bit</label>
         <capacities>
           <li>Stab</li>
         </capacities>
         <power>15</power>
-        <cooldownTime>2</cooldownTime>
-        <armorPenetration>0</armorPenetration>
+        <cooldownTime>2.0</cooldownTime>
+        <armorPenetration>0.15</armorPenetration>
       </li>
     </tools>
     <weaponTags>
@@ -194,29 +181,24 @@
       <Chemfuel>20</Chemfuel>
       <ComponentIndustrial>4</ComponentIndustrial>
     </costList>
-    <equippedStatOffsets>
-      <GeneralLaborSpeed>0.4</GeneralLaborSpeed>
-      <SmoothingSpeed>0.8</SmoothingSpeed>
-      <ConstructionSpeed>0.2</ConstructionSpeed>
-    </equippedStatOffsets>
     <tools>
       <li>
-        <label>blade</label>
+        <label>chisel tip</label>
         <capacities>
-          <li>Scratch</li>
+          <li>Stab</li>
         </capacities>
-        <power>6</power>
-        <cooldownTime>0.8</cooldownTime>
-        <armorPenetration>0</armorPenetration>
+        <power>7</power>
+        <cooldownTime>0.9</cooldownTime>
+        <armorPenetration>0.55</armorPenetration>
       </li>
       <li>
         <label>edge</label>
         <capacities>
-          <li>Cut</li>
+          <li>Scratch</li>
         </capacities>
-        <power>6</power>
-        <cooldownTime>1</cooldownTime>
-        <armorPenetration>0</armorPenetration>
+        <power>5</power>
+        <cooldownTime>0.8</cooldownTime>
+        <armorPenetration>0.10</armorPenetration>
       </li>
     </tools>
     <weaponTags>
@@ -286,30 +268,23 @@
       <Chemfuel>40</Chemfuel>
       <ComponentIndustrial>6</ComponentIndustrial>
     </costList>
-    <equippedStatOffsets>
-      <GeneralLaborSpeed>0.8</GeneralLaborSpeed>
-      <ConstructionSpeed>0.2</ConstructionSpeed>
-      <ButcheryMechanoidEfficiency>0.8</ButcheryMechanoidEfficiency>
-      <ButcheryMechanoidSpeed>0.8</ButcheryMechanoidSpeed>
-    </equippedStatOffsets>
     <tools>
       <li>
-        <label>blade</label>
+        <label>bit</label>
         <capacities>
-          <li>Scratch</li>
+          <li>Stab</li>
         </capacities>
         <power>5</power>
-        <cooldownTime>0.8</cooldownTime>
-        <armorPenetration>0</armorPenetration>
+        <cooldownTime>1.1</cooldownTime>
+        <armorPenetration>0.25</armorPenetration>
       </li>
       <li>
-        <label>edge</label>
+        <label>body</label>
         <capacities>
-          <li>Cut</li>
+          <li>Blunt</li>
         </capacities>
-        <power>5</power>
-        <cooldownTime>1</cooldownTime>
-        <armorPenetration>0</armorPenetration>
+        <power>4</power>
+        <cooldownTime>1.0</cooldownTime>
       </li>
     </tools>
     <weaponTags>

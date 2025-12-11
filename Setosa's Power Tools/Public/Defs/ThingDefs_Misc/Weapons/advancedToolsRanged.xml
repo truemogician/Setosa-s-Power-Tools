@@ -47,7 +47,7 @@
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>4</damageAmountBase>
-      <speed>55</speed>
+      <speed>45</speed>
     </projectile>
   </ThingDef>
 
@@ -72,10 +72,10 @@
     <statBases>
       <WorkToMake>10000</WorkToMake>
       <Mass>2</Mass>
-      <AccuracyTouch>0.5</AccuracyTouch>
-      <AccuracyShort>0.6</AccuracyShort>
-      <AccuracyMedium>0.4</AccuracyMedium>
-      <AccuracyLong>0.15</AccuracyLong>
+      <AccuracyTouch>0.40</AccuracyTouch>
+      <AccuracyShort>0.30</AccuracyShort>
+      <AccuracyMedium>0.15</AccuracyMedium>
+      <AccuracyLong>0.05</AccuracyLong>
       <RangedWeapon_Cooldown>1.65</RangedWeapon_Cooldown>
     </statBases>
     <weaponTags>
@@ -102,19 +102,16 @@
     <verbs>
       <li>
         <burstShotCount>6</burstShotCount>
-        <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>nailGunNail</defaultProjectile>
-        <warmupTime>1</warmupTime>
+        <warmupTime>0.4</warmupTime>
         <range>15</range>
         <soundCast>Interact_BeatFire</soundCast>
         <muzzleFlashScale>1</muzzleFlashScale>
       </li>
     </verbs>
-    <equippedStatOffsets>
-      <ConstructionSpeed>0.40</ConstructionSpeed>
-    </equippedStatOffsets>
     <tools>
       <li>
         <label>limb</label>
@@ -122,7 +119,7 @@
           <li>Poke</li>
           <li>Stab</li>
         </capacities>
-        <power>3</power>
+        <power>5</power>
         <cooldownTime>0.8</cooldownTime>
       </li>
     </tools>
