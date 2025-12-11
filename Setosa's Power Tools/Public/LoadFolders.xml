@@ -4,6 +4,5 @@
     <li>Shared</li>
     <li>1.6</li>
     <li IfModActive="CETeam.CombatExtended">CombatExtended</li>
-    <li IfModActive="co.uk.epicguru.meleeanimation">MeleeAnimation</li>
   </v1.6>
 </loadFolders>
