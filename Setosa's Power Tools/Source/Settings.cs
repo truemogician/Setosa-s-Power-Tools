@@ -21,7 +21,6 @@ public class Settings : ModSettings {
 
 	public ThingStatOffsetCollection Offsets => Preset switch {
 		StatsPreset.Nerfed => Presets.Nerfed,
-		StatsPreset.Buffed => Presets.Buffed,
 		StatsPreset.Custom => CustomOffsets,
 		_                  => Presets.Normal
 	};

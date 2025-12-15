@@ -1,7 +1,7 @@
 ﻿namespace Setosa;
 
 public static class Presets {
-	public static readonly ThingStatOffsetCollection Buffed = new() {
+	public static readonly ThingStatOffsetCollection Normal = new() {
 		{
 			"AdvancedTool_IndustrialChainsaw",
 			[
@@ -48,7 +48,5 @@ public static class Presets {
 		}
 	};
 
-	public static readonly ThingStatOffsetCollection Normal = Buffed.Clone().Transform(v => v > 0 ? v / 2f : v);
-
-	public static readonly ThingStatOffsetCollection Nerfed = Buffed.Clone().Transform(v => v > 0 ? v / 4f : v);
+	public static readonly ThingStatOffsetCollection Nerfed = Normal.Clone().Transform(v => v > 0 ? v / 2f : v);
 }

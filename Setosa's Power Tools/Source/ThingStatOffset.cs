@@ -17,8 +17,6 @@ public enum StatsPreset : byte {
 
 	Nerfed,
 
-	Buffed,
-
 	Custom
 }
 
@@ -31,7 +29,7 @@ public class ThingStatOffset : IExposable {
 
 	public ThingStatOffset() { } // For reflection
 
-    public ThingStatOffset(string thingDef, string statDef, float value) {
+	public ThingStatOffset(string thingDef, string statDef, float value) {
 		_thingDef = thingDef;
 		_statDef = statDef;
 		_value = value;
@@ -45,20 +43,20 @@ public class ThingStatOffset : IExposable {
 
 	public ThingDef? Thing => DefDatabase<ThingDef>.GetNamed(ThingDef, false);
 
-    public StatDef? Stat => DefDatabase<StatDef>.GetNamed(StatDef, false);
+	public StatDef? Stat => DefDatabase<StatDef>.GetNamed(StatDef, false);
 
-    internal bool Valid => _thingDef is not null && _statDef is not null;
+	internal bool Valid => _thingDef is not null && _statDef is not null;
 
 	public void ExposeData() {
 		string? valueStr = Scribe.mode == LoadSaveMode.Saving ? $"{_value:0.#}" : string.Empty;
-        Scribe_Values.Look(ref _thingDef, "thing");
+		Scribe_Values.Look(ref _thingDef, "thing");
 		Scribe_Values.Look(ref _statDef, "stat");
 		Scribe_Values.Look(ref valueStr, "value");
 		if (Scribe.mode == LoadSaveMode.LoadingVars) {
 			if (valueStr is null || !float.TryParse(valueStr, out _value))
 				_value = 0f;
-        }
-        if (_thingDef is null || _statDef is null)
+		}
+		if (_thingDef is null || _statDef is null)
 			Logger.Warning("Missing thingDef or/and statDef");
 	}
 
@@ -104,7 +102,7 @@ public class ThingStatOffsetCollection : Base, IExposable {
 			Clear();
 			foreach (var tuple in tuples) {
 				if (!tuple.Valid) { // Possible invalid data from save file
-                    Logger.Warning("Invalid stat offset");
+					Logger.Warning("Invalid stat offset");
 					continue;
 				}
 				Add(tuple);
@@ -135,16 +133,16 @@ public class ThingStatOffsetCollection : Base, IExposable {
 			if (thing is null) {
 				Logger.Warning($"Thing {group.Key} not found", true);
 				continue;
-            }
+			}
 			var statList = listGetter(thing);
 			var modifiers = group.Select(t => (StatModifier)(ThingStatOffset)t).ToArray();
-            if (mode == ApplyMode.Overwrite)
+			if (mode == ApplyMode.Overwrite)
 				statList.Clear();
 			else if (mode == ApplyMode.Set) {
 				var stats = new HashSet<string>(modifiers.Select(o => o.stat.defName));
 				statList.RemoveAll(m => stats.Contains(m.stat.defName));
-            }
+			}
 			statList.AddRange(modifiers);
-        }
+		}
 	}
 }
